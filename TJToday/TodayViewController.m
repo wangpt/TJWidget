@@ -37,10 +37,10 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-#ifdef __IPHONE_10_0 //因为是iOS10才有的，还请记得适配
-    //如果需要折叠
-    self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeCompact;
-#endif
+    if ([[UIDevice currentDevice].systemVersion floatValue] >= 10) {//因为是iOS10才有的，还请记得适配
+        self.extensionContext.widgetLargestAvailableDisplayMode = NCWidgetDisplayModeCompact;//如果需要折叠
+        
+    }
 }
 static const CGFloat ITEM_SIZE = 50;
 static const CGFloat LABEL_HEIGHT = 20;
